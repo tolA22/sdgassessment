@@ -62,8 +62,8 @@ function currentlyInfected($data){
   // $data = json_decode($data,true);
   // print_r($data["data"]);
   $reportedCases = $data["data"]["reportedCases"];
-  $data["impact"]["currentlyInfected"] = impactCurrentlyInfected($reportedCases);
-  $data["severeImpact"]["currentlyInfected"] = severeImpactCurrentlyInfected($reportedCases);
+  $data["impact"]["currentlyInfected"] = (int)impactCurrentlyInfected($reportedCases);
+  $data["severeImpact"]["currentlyInfected"] = (int)severeImpactCurrentlyInfected($reportedCases);
   // $data = json_encode($data);
   return $data;
 }
@@ -78,8 +78,8 @@ function currentlyInfectedAfterXdays($data){
   // echo $data;
   // $data = json_decode($data,true);
   $power = (int)(getDays($data["data"]["periodType"],$data["data"]["timeToElapse"]) / 3);
-  $data["impact"]["infectionsByRequestedTime"] = impactCurrentlyInfectedAfterXdays($data["impact"]["currentlyInfected"],$power);
-  $data["severeImpact"]["infectionsByRequestedTime"] = impactCurrentlyInfectedAfterXdays($data["severeImpact"]["currentlyInfected"],$power);
+  $data["impact"]["infectionsByRequestedTime"] = (int)impactCurrentlyInfectedAfterXdays($data["impact"]["currentlyInfected"],$power);
+  $data["severeImpact"]["infectionsByRequestedTime"] = (int)impactCurrentlyInfectedAfterXdays($data["severeImpact"]["currentlyInfected"],$power);
   // $data = json_encode($data);
   return $data;
 }
@@ -87,8 +87,8 @@ function currentlyInfectedAfterXdays($data){
 function severeCasesByRequestedTime($data){
   // echo $data;
   // $data = json_decode($data,true);;
-  $data["impact"]["severeCasesByRequestedTime"] = impactSevereCasesByRequestedTime($data["impact"]["infectionsByRequestedTime"]);
-  $data["severeImpact"]["severeCasesByRequestedTime"] =  impactSevereCasesByRequestedTime($data["severeImpact"]["infectionsByRequestedTime"]); 
+  $data["impact"]["severeCasesByRequestedTime"] = (int)impactSevereCasesByRequestedTime($data["impact"]["infectionsByRequestedTime"]);
+  $data["severeImpact"]["severeCasesByRequestedTime"] =  (int)impactSevereCasesByRequestedTime($data["severeImpact"]["infectionsByRequestedTime"]); 
   // $data = json_encode($data);
   return $data;
 }
@@ -101,8 +101,8 @@ function impactSevereCasesByRequestedTime($infectionsByRequestedTime){
 function hospitalBedsByRequestedTime($data){
   // $data = json_decode($data,true);
   $totalHospitalBeds = $data["data"]["totalHospitalBeds"];
-  $data["impact"]["hospitalBedsByRequestedTime"] = impactHospitalBedsByRequestedTime($totalHospitalBeds,$data["impact"]["severeCasesByRequestedTime"]);
-  $data["severeImpact"]["hospitalBedsByRequestedTime"] =  impactHospitalBedsByRequestedTime($totalHospitalBeds,$data["severeImpact"]["severeCasesByRequestedTime"]); 
+  $data["impact"]["hospitalBedsByRequestedTime"] = (int)impactHospitalBedsByRequestedTime($totalHospitalBeds,$data["impact"]["severeCasesByRequestedTime"]);
+  $data["severeImpact"]["hospitalBedsByRequestedTime"] =  (int)impactHospitalBedsByRequestedTime($totalHospitalBeds,$data["severeImpact"]["severeCasesByRequestedTime"]); 
   // $data = json_encode($data);
   return $data;
 }
@@ -113,8 +113,8 @@ function impactHospitalBedsByRequestedTime($totalHospitalBeds, $severeCasesByReq
 
 function casesForICUByRequestedTime($data){
   // $data = json_decode($data,true);
-  $data["impact"]["casesForICUByRequestedTime"] = impactCasesForICUByRequestedTime($data["impact"]["infectionsByRequestedTime"]);
-  $data["severeImpact"]["casesForICUByRequestedTime"] =  impactCasesForICUByRequestedTime($data["severeImpact"]["infectionsByRequestedTime"]); 
+  $data["impact"]["casesForICUByRequestedTime"] = (int)impactCasesForICUByRequestedTime($data["impact"]["infectionsByRequestedTime"]);
+  $data["severeImpact"]["casesForICUByRequestedTime"] =  (int)impactCasesForICUByRequestedTime($data["severeImpact"]["infectionsByRequestedTime"]); 
   // $data = json_encode($data);
   return $data;
 }
@@ -125,8 +125,8 @@ function impactCasesForICUByRequestedTime($infectionsByRequestedTime){
 
 function casesForVentilatorsByRequestedTime($data){
   // $data = json_decode($data,true);
-  $data["impact"]["casesForVentilatorsByRequestedTime"] = impactCasesForVentilatorsByRequestedTime($data["impact"]["infectionsByRequestedTime"]);
-  $data["severeImpact"]["casesForVentilatorsByRequestedTime"] =  impactCasesForVentilatorsByRequestedTime($data["severeImpact"]["infectionsByRequestedTime"]); 
+  $data["impact"]["casesForVentilatorsByRequestedTime"] = (int)impactCasesForVentilatorsByRequestedTime($data["impact"]["infectionsByRequestedTime"]);
+  $data["severeImpact"]["casesForVentilatorsByRequestedTime"] =  (int)impactCasesForVentilatorsByRequestedTime($data["severeImpact"]["infectionsByRequestedTime"]); 
   // $data = json_encode($data);
   return $data;
 }
@@ -140,8 +140,8 @@ function dollarsInFlight($data){
   $amount=  $data["data"]["region"]["avgDailyIncomeInUSD"];
   $rate = $data["data"]["region"]["avgDailyIncomePopulation"];
   $period = getDays($data["data"]["periodType"],$data["data"]["timeToElapse"]);
-  $data["impact"]["dollarsInFlight"] = impactDollarsInFlight($data["impact"]["infectionsByRequestedTime"],$rate,$amount,$period);
-  $data["severeImpact"]["dollarsInFlight"] =  impactDollarsInFlight($data["severeImpact"]["infectionsByRequestedTime"],$rate,$amount,$period); 
+  $data["impact"]["dollarsInFlight"] = (int)impactDollarsInFlight($data["impact"]["infectionsByRequestedTime"],$rate,$amount,$period);
+  $data["severeImpact"]["dollarsInFlight"] =  (int)impactDollarsInFlight($data["severeImpact"]["infectionsByRequestedTime"],$rate,$amount,$period); 
   // $data = json_encode($data);
   return $data;
 }

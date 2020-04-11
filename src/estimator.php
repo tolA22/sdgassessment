@@ -151,5 +151,5 @@ function impactDollarsInFlight($infectionsByRequestedTime,$rate,$amount,$period)
   echo $rate;
   echo $amount;
   echo $period;
-  return $infectionsByRequestedTime * $rate *$amount *$period;
+  return $infectionsByRequestedTime * ($rate/$period) *$amount;
 }

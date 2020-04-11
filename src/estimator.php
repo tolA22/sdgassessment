@@ -126,7 +126,7 @@ function impactCasesForICUByRequestedTime($infectionsByRequestedTime){
 function casesForVentilatorsByRequestedTime($data){
   $data = json_decode($data,true);
   $data["impact"]["casesForVentilatorsByRequestedTime"] = impactCasesForVentilatorsByRequestedTime($data["impact"]["infectionsByRequestedTime"]);
-  $data["severeImpact"]["casesForVentilatorsByRequestedTime"] =  impactCasesForVentilatorsByRequestedTime($data["severeImpact"]["infectionsRequestedTime"]); 
+  $data["severeImpact"]["casesForVentilatorsByRequestedTime"] =  impactCasesForVentilatorsByRequestedTime($data["severeImpact"]["infectionsByRequestedTime"]); 
   $data = json_encode($data);
   return $data;
 }

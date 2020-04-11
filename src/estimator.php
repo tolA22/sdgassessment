@@ -1,15 +1,14 @@
 <?php
 
-$data = array("region"=>array("name"=>"Africa","avgAge"=>19.7,"avgDailyIncomeInUSD"=>5,"avgDailyIncomePopulation"=>0.71),"periodType"=>"days","timeToElapse"=>58,"reportedCases"=>674,"population"=>66622705,"totalHospitalBeds"=>1380614 ) ;
-
-$data =  json_encode($data);
+// $data = array("region"=>array("name"=>"Africa","avgAge"=>19.7,"avgDailyIncomeInUSD"=>5,"avgDailyIncomePopulation"=>0.71),"periodType"=>"days","timeToElapse"=>58,"reportedCases"=>674,"population"=>66622705,"totalHospitalBeds"=>1380614 ) ;
+// $data =  json_encode($data);
 // echo $data;
-// echo(2**2);
-print( covid19ImpactEstimator($data) );
+
+// print( covid19ImpactEstimator($data) );
 
 function covid19ImpactEstimator($data)
 {
-  $data = json_decode($data);
+  $data = json_decode($data,true);
   $output= array("data"=>$data);
   $output = json_encode($output);
   // echo $output;

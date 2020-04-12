@@ -1,4 +1,5 @@
 <?php
+echo "here";
 require "bootstrap.php";
 
 

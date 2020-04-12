@@ -39,7 +39,7 @@ $router->post('/api/v1/on-covid-19/', function($request) {
   });
 
   $router->get('/api/v1/on-covid-19/logs', function($request) use ($dbConnection) {
-
+    return "tolka";
     $logController  = new LogController($dbConnection);
     $data = $logController->getLogs();
     // print_r($data);

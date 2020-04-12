@@ -113,7 +113,7 @@ class Router
     $this->finish =  microtime(TRUE);
     $logData["status"] = 200;
     $logData["time"] = $this->finish - $this->start;
-    logs($this->dbConnection,$logData);
+    // logs($this->dbConnection,$logData);
     // print_r($logData);
   }
 

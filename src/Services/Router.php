@@ -109,7 +109,7 @@ class Router
       return ;
     }
 
-    echo call_user_func_array($method, array($this->request));
+    print_r(call_user_func_array($method, array($this->request)));
     $this->finish =  microtime(TRUE);
     $logData["status"] = 200;
     $logData["time"] = $this->finish - $this->start;

@@ -20,8 +20,8 @@ $router = new Router(new Request,$dbConnection);
 
 $router->post('/api/v1/on-covid-19/', function($request) {
     $estimatorController  = new EstimatorController();
-    $response = json_encode($estimatorController->covidEstimator($request->getBody()));
-    header('Content-Type: application/json');
+    $response = $estimatorController->covidEstimator($request->getBody());
+    // header('Content-Type: application/json');
     return $response;
 
   });

@@ -19,7 +19,7 @@ function covid19ImpactEstimator($data)
   $output = casesForICUByRequestedTime($output);
   $output = casesForVentilatorsByRequestedTime($output);
   $output = dollarsInFlight($output);
-  return $output;
+  return json_encode($output);
 }
 
 function getDays($type,$tTE){
@@ -165,7 +165,7 @@ function convertToText($data){
     foreach($datum as $key=>$value){
       $str.= $value ;
       if($key == "time"){
-        $str.= " ms";
+        $str.= "ms";
       }
        $str.="\t\t";
     }

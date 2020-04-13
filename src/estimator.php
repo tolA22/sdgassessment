@@ -167,7 +167,12 @@ function convertToText($data){
       if($key == "time"){
         $str.= " ms";
       }
-       $str.="\t\t";
+      if($key == "verb" && $value == "GET"){
+        $str.="\t\t\t";
+      }else{
+        $str.="\t\t";
+      }
+       
     }
     $str.="\n";
   }

@@ -43,13 +43,14 @@ class Request implements IRequest
     if ($this->requestMethod == "POST")
     {
     // print($this->contentType);
-    if($this->contentType == "application/json"){
-        $body = json_decode(file_get_contents("php://input"),true);
-        // print_r($body);
-        return $body;
+    if($this->contentType == "application/x-www-form-urlencoded"){
+        return $_POST;
+        
     }
-
-      return $_POST;
+    $body = json_decode(file_get_contents("php://input"),true);
+    // print_r($body);
+    return $body;
+      
     }
   }
 }

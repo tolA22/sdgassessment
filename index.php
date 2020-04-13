@@ -47,7 +47,7 @@ $router->post('/api/v1/on-covid-19/', function($request) {
     $data = $logController->getLogs();
     // print_r($data);
     $response = convertToText($data);
-    header('Content-Type: application/text');
+    header('Content-Type: text/plain');
     return $response;
   });
 

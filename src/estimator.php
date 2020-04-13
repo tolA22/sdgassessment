@@ -165,7 +165,7 @@ function convertToText($data){
     foreach($datum as $key=>$value){
       $str.= $value ;
       if($key == "time"){
-        $str.= "ms";
+        $str.= " ms";
       }
        $str.="\t\t";
     }

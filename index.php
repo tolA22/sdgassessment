@@ -21,6 +21,7 @@ $router = new Router(new Request,$dbConnection);
 $router->post('/api/v1/on-covid-19/', function($request) {
     $estimatorController  = new EstimatorController();
     $response = json_encode($estimatorController->covidEstimator($request->getBody()));
+    header('Content-Type: application/json');
     return $response;
 
   });
@@ -28,6 +29,7 @@ $router->post('/api/v1/on-covid-19/', function($request) {
   $router->post('/api/v1/on-covid-19/json', function($request) {
     $estimatorController  = new EstimatorController();
     $response = json_encode($estimatorController->covidEstimator($request->getBody()));
+    header('Content-Type: application/json');
     return $response;
   });
 
@@ -35,6 +37,7 @@ $router->post('/api/v1/on-covid-19/', function($request) {
     $estimatorController  = new EstimatorController();
     $data = $estimatorController->covidEstimator($request->getBody());
     $response = convertToXML($data);
+    header('Content-Type: application/xml');
     return $response;
   });
 
@@ -44,6 +47,7 @@ $router->post('/api/v1/on-covid-19/', function($request) {
     $data = $logController->getLogs();
     // print_r($data);
     $response = convertToText($data);
+    header('Content-Type: application/text');
     return $response;
   });
 

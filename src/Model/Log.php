@@ -60,9 +60,9 @@ class Log {
         if($time < 10){
             $time = ("0".(string)$time);
         }
-        // if($time >100){
-        //     $time = (((string)$time)[0].((string)$time)[1]);
-        // }
+        if((int)($time) >100){
+            $time = (((string)$time)[0].((string)$time)[1]);
+        }
         // print($time);
         return (string)$time;
     }

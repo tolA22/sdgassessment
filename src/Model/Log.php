@@ -58,12 +58,12 @@ class Log {
         // print($time);
         $time = (int)($time * 1000);
         if($time < 10){
-            $time = (int)("0".(string)$time);
+            $time = ("0".(string)$time);
         }
-        if($time >100){
-            $time = (int)(((string)$time)[0].((string)$time)[1]);
-        }
+        // if($time >100){
+        //     $time = (((string)$time)[0].((string)$time)[1]);
+        // }
         // print($time);
-        return $time;
+        return (string)$time;
     }
 }

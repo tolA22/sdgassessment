@@ -32,6 +32,7 @@ class Log {
 
     public function insert(Array $input)
     {
+        // echo "here";
         
         $statement = "
             INSERT INTO logs 
@@ -45,11 +46,24 @@ class Log {
             $statement->bindValue(':verb',$input["verb"]);
             $statement->bindValue(':uri',$input["uri"]);
             $statement->bindValue(':status_code',$input["status"]);
-            $statement->bindValue(':time',$input["time"]);
+            $statement->bindValue(':time',$this->format($input["time"]));
             $statement->execute();
             return $statement->rowCount();
         } catch (\PDOException $e) {
             exit($e->getMessage());
         }    
+    }
+
+    private function format($time){
+        // print($time);
+        $time = (int)($time * 1000);
+        if($time < 10){
+            $time = (int)("0".(string)$time);
+        }
+        if($time >100){
+            $time = (int)(((string)$time)[0].((string)$time)[1]);
+        }
+        // print($time);
+        return $time;
     }
 }
